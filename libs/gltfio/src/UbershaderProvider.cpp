@@ -128,10 +128,11 @@ Material* UbershaderProvider::getMaterial(const MaterialKey& config) const {
     const Shading shading = config.unlit ? Shading::UNLIT :
             (config.useSpecularGlossiness ? Shading::SPECULAR_GLOSSINESS : Shading::LIT);
 
+    // BALA: hardcode blending mode by default to FADE to get opacity to work for gltf
     BlendingMode blending;
     switch (config.alphaMode) {
-        case AlphaMode::OPAQUE: blending = BlendingMode::OPAQUE; break;
-        case AlphaMode::MASK:   blending = BlendingMode::MASKED; break;
+        case AlphaMode::OPAQUE: blending = BlendingMode::FADE; break;
+        case AlphaMode::MASK:   blending = BlendingMode::FADE; break;
         case AlphaMode::BLEND:  blending = BlendingMode::FADE; break;
     }
 
@@ -209,9 +210,12 @@ MaterialInstance* UbershaderProvider::createMaterialInstance(MaterialKey* config
             MaterialInstance::CullingMode::NONE :
             MaterialInstance::CullingMode::BACK);
 
-    mi->setTransparencyMode(config->doubleSided ?
-            MaterialInstance::TransparencyMode::TWO_PASSES_TWO_SIDES :
-            MaterialInstance::TransparencyMode::DEFAULT);
+    // mi->setTransparencyMode(config->doubleSided ?
+    //         MaterialInstance::TransparencyMode::TWO_PASSES_TWO_SIDES :
+    //         MaterialInstance::TransparencyMode::DEFAULT);
+
+    // BALA: hardcode transparency mode by default to TWO_PASSES_ONE_SIDE to get opacity to work for gltf
+    mi->setTransparencyMode(MaterialInstance::TransparencyMode::TWO_PASSES_ONE_SIDE);
 
     mat3f identity;
     mi->setParameter("baseColorUvMatrix", identity);
