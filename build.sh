@@ -484,15 +484,19 @@ function build_android {
         if [[ "${INSTALL_COMMAND}" ]]; then
             echo "Installing out/filamat-android-debug.aar..."
             cp filamat-android/build/outputs/aar/filamat-android-full-debug.aar ../out/filamat-android-debug.aar
+            cp ../out/filamat-android-debug.aar ../../libs/filamat-android/filamat-android-debug.aar
 
             echo "Installing out/filament-android-debug.aar..."
             cp filament-android/build/outputs/aar/filament-android-debug.aar ../out/
+            cp ../out/filament-android-debug.aar ../../libs/filament-android/filament-android-debug.aar
 
             echo "Installing out/gltfio-android-debug.aar..."
             cp gltfio-android/build/outputs/aar/gltfio-android-full-debug.aar ../out/gltfio-android-debug.aar
+            cp ../out/gltfio-android-debug.aar ../../libs/gltfio-android/gltfio-android-debug.aar
 
             echo "Installing out/filament-utils-android-debug.aar..."
             cp filament-utils-android/build/outputs/aar/filament-utils-android-debug.aar ../out/filament-utils-android-debug.aar
+            cp ../out/filament-utils-android-debug.aar ../../libs/filament-utils-android/filament-utils-android-debug.aar
 
             if [[ "${BUILD_ANDROID_SAMPLES}" == "true" ]]; then
                 for sample in ${ANDROID_SAMPLES}; do
@@ -532,15 +536,19 @@ function build_android {
             echo "Installing out/filamat-android-release.aar..."
             cp filamat-android/build/outputs/aar/filamat-android-lite-release.aar ../out/
             cp filamat-android/build/outputs/aar/filamat-android-full-release.aar ../out/filamat-android-release.aar
+            cp ../out/filamat-android-release.aar ../../libs/filamat-android/filamat-android-release.aar
 
             echo "Installing out/filament-android-release.aar..."
             cp filament-android/build/outputs/aar/filament-android-release.aar ../out/
+            cp ../out/filament-android-release.aar ../../libs/filament-android/filament-android-release.aar
 
             echo "Installing out/gltfio-android-release.aar..."
             cp gltfio-android/build/outputs/aar/gltfio-android-full-release.aar ../out/gltfio-android-release.aar
+            cp ../out/gltfio-android-release.aar ../../libs/gltfio-android/gltfio-android-release.aar
 
             echo "Installing out/filament-utils-android-release.aar..."
             cp filament-utils-android/build/outputs/aar/filament-utils-android-release.aar ../out/filament-utils-android-release.aar
+            cp ../out/filament-utils-android-release.aar ../../libs/filament-utils-android/filament-utils-android-release.aar
 
             if [[ "${BUILD_ANDROID_SAMPLES}" == "true" ]]; then
                 for sample in ${ANDROID_SAMPLES}; do
